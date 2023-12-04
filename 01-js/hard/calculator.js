@@ -16,6 +16,53 @@
   Once you've implemented the logic, test your code by running
 */
 
-class Calculator {}
+class Calculator {
+  constructor(){
+    this.result = 0;
+  }
+  add(x){
+    this.result = this.result + x;
+  }
+  subtract(x){
+    this.result = this.result - x;
+  }
+  multiply(x){
+    this.result = this.result * x;
+  }
+  divide(x){
+      if((this.result/x) == Infinity){
+        throw error;
+      }
+      else{
+        this.result = this.result / x;
+      }
+  }
+  clear(){
+    this.result = 0;
+  }
+  getResult(){
+    return this.result;
+  }
+  calculate(expression){
+  expression = expression.replace(/\s/g, '');
+  try{
+
+    if(eval(expression) == Infinity){
+      throw error;
+    }
+    else{
+      this.result = eval(expression);
+    }
+  }catch(error){
+    throw new Error(error);
+    // throw error;
+  }
+}
+}
+
+// const myobject = new Calculator();
+
+
+// console.log(myobject.calculate('6 + 10   *   (10+1)'));
 
 module.exports = Calculator;

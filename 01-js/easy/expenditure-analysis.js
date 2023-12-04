@@ -6,7 +6,26 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  return [];
+  obj = {};
+  for(let i = 0; i < transactions.length; i++){
+    if(transactions[i].category in obj){
+      obj[transactions[i].category] += transactions[i].price;
+    }
+    else{
+      obj[transactions[i].category] = transactions[i].price;
+    }
+  }
+
+  arr = [];
+  objectList = Object.entries(obj);
+  for(let i = 0; i < Object.keys(obj).length; i++){
+    var temp = {};
+    temp['category'] = objectList[i][0];
+    temp['totalSpent'] = objectList[i][1];
+    arr.push(temp);
+  }
+
+  return arr;
 }
 
 module.exports = calculateTotalSpentByCategory;
